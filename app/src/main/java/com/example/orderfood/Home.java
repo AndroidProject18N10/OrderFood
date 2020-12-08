@@ -57,7 +57,9 @@ public class Home extends AppCompatActivity
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener((view)->{
-            Snackbar.make(view,"Replace with your own action",Snackbar.LENGTH_LONG).setAction("Action",null).show();
+            //Snackbar.make(view,"Replace with your own action",Snackbar.LENGTH_LONG).setAction("Action",null).show();
+            Intent cartIntent = new Intent(Home.this,Cart.class);
+            startActivity(cartIntent);
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -139,12 +141,12 @@ public class Home extends AppCompatActivity
         if (id == R.id.nav_menu) {
             //return true;
         }else if(id == R.id.nav_cart){
-            //Intent cartIntent = new Intent(Home.this, Cart.class);
-            //startActivity(cartIntent);
+            Intent cartIntent = new Intent(Home.this, Cart.class);
+            startActivity(cartIntent);
 
         }else if(id == R.id.nav_orders){
-            //Intent orderIntent = new Intent(Home.this, OrderStatus.class);
-            //startActivity(orderIntent);
+            Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+            startActivity(orderIntent);
 
         }else if(id == R.id.nav_log_out){
             Intent signIn = new Intent(Home.this, SignIn.class);

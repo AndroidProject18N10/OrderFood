@@ -69,10 +69,10 @@ public class FoodList extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         //start new activity
-                       // Intent foodDetail =  new Intent(FoodList.this, FoodDetail.class);
-                        //foodDetail.putExtra("FoodId", adapter.getRef(position).getKey());
-                        //startActivity(foodDetail);
-                        Toast.makeText(FoodList.this,""+local.getName(),Toast.LENGTH_SHORT).show();
+                       Intent foodDetail =  new Intent(FoodList.this, FoodDetail.class);
+                        foodDetail.putExtra("FoodId", adapter.getRef(position).getKey());
+                        startActivity(foodDetail);
+                        //Toast.makeText(FoodList.this,""+local.getName(),Toast.LENGTH_SHORT).show();
                     }
                 });
             }
