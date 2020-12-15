@@ -54,10 +54,10 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.setHeaderTitle(Common.DELETE);
+    public void onCreateContextMenu(ContextMenu contextMenu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
-        menu.add(0,0,getAdapterPosition(),Common.DELETE);
+        contextMenu.setHeaderTitle("Select action");
+        contextMenu.add(0,0,getAdapterPosition(),Common.DELETE);
     }
 }
 

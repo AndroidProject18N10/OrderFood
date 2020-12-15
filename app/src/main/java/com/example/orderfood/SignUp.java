@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.orderfood.Common.Common;
 import com.example.orderfood.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +19,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class SignUp extends AppCompatActivity {
 
-    MaterialEditText edtPhone, edtName, edtPassword;
+    MaterialEditText edtPhone, edtName, edtPassword, edtSecureCode;
     Button btnSignUp;
 
     @Override
@@ -29,7 +30,7 @@ public class SignUp extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhone);
         edtName = findViewById(R.id.edtName);
         edtPassword = findViewById(R.id.edtPassword);
-
+        edtSecureCode = findViewById(R.id.edtSecureCode);
         btnSignUp = findViewById(R.id.btnSignUp);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -38,33 +39,42 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
-                mDialog.setMessage("Please Wating...");
-                mDialog.show();
+                if(Common.isConnectedToInternet(getBaseContext())) {
 
-                table_user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //check if user not exist in database
-                        if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
-                            //get user information
-                            mDialog.dismiss();
-                            User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
-                            Toast.makeText(SignUp.this, "Phone number already registered !", Toast.LENGTH_SHORT).show();
+                    final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
+                    mDialog.setMessage("Please Wating...");
+                    mDialog.show();
 
-                        } else {
-                            mDialog.dismiss();
-                            User user = new User(edtName.getText().toString(), edtPassword.getText().toString());
-                            table_user.child(edtPhone.getText().toString()).setValue(user);
-                            Toast.makeText(SignUp.this, "Sign Up Successfully !", Toast.LENGTH_SHORT).show();
-                            finish();
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            //check if user not exist in database
+                            if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                                //get user information
+                                mDialog.dismiss();
+                                User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
+                                Toast.makeText(SignUp.this, "Phone number already registered !", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                mDialog.dismiss();
+                                User user = new User(edtName.getText().toString(), edtPassword.getText().toString(),
+                                        edtSecureCode.getText().toString());
+                                table_user.child(edtPhone.getText().toString()).setValue(user);
+                                Toast.makeText(SignUp.this, "Sign Up Successfully !", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
-                    }
-                    @Override
-                    public void onCancelled (DatabaseError databaseError){
 
-                    }
-                });
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(SignUp.this,"Please check your connection !!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
     }

@@ -13,18 +13,21 @@ public class Request {
     private String total;
     private String status;
     private List<Order> foods;
+    private String paymentState;
     private boolean partial = false;
 
     public Request() {
     }
 
-    public Request(String phone, String name, String address, String total, List<Order> foods) {
+    public Request(String phone, String name, String address, String total, String status, String paymentState,List<Order> foods ) {
         this.phone = phone;
         this.name = name;
         this.address = address;
         this.total = total;
+        this.status= status;
         this.foods = foods;
-        this.status="0"; //Default is 0, 0:Placed, 1: Shipping, 2: Shipped
+        this.paymentState = paymentState;
+         //Default is 0, 0:Placed, 1: Shipping, 2: Shipped
     }
 
     public boolean isPartial() {
@@ -73,6 +76,13 @@ public class Request {
 
     public void setTotal(String total) {
         this.total = total;
+    }
+    public String getPaymentState() {
+        return paymentState;
+    }
+
+    public void setgetPaymentState(String paymentState) {
+        this.paymentState = paymentState;
     }
 
     public List<Order> getFoods() {

@@ -49,6 +49,37 @@
             app:met_singleLineEllipsis="true"
             />
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+        <CheckBox
+            android:id="@+id/ckbRemember"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Material.Drawable.CheckBox"
+            android:text="Remember me"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            app:cbd_strokeColor="@android:color/white"
+            app:cbd_tickColor="@color/colorPrimaryDark"
+            tools:ignore="Suspicious0dp" />
+            
+            <TextView
+                android:id="@+id/txtForgotPwd"
+                android:textColor="@android:color/white"
+                android:text="@string/forgot_pwd"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:ignore="Suspicious0dp" />
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
     <Button

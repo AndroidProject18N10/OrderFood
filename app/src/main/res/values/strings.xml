@@ -7,6 +7,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="forgot_pwd"><u>Forgot Password ?</u></string>
+
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -14,5 +17,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-
+    <string name = "facebook_app_id">2756797841235935</string>
+    <string name = "facebook_login_protocol_name">fb2756797841235935</string>
 </resources>

@@ -4,13 +4,23 @@ public class User {
     private String Name;
     private String Password;
     private String Phone;
+    private String secureCode;
 
     public User() {
     }
 
-    public User(String name, String password) {
+    public User(String name, String password, String secureCode) {
         Name = name;
         Password = password;
+        this.secureCode = secureCode;
+    }
+
+    public String getSecureCode() {
+        return secureCode;
+    }
+
+    public void setSecureCode(String secureCode) {
+        this.secureCode = secureCode;
     }
 
     public void setPhone(String phone) {

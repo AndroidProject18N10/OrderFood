@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+
+
         <activity android:name=".OrderStatus"></activity>
         <activity android:name=".Cart" />
         <activity android:name=".FoodDetail" />
@@ -44,6 +49,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <provider
+            android:authorities="com.facebook.app.FacebookContentProvider2756797841235935"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+
+
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
